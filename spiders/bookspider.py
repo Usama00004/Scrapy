@@ -18,7 +18,7 @@ class BookspiderSpider(scrapy.Spider):
             if 'catalogue/' in next_page:
                 next_page_url = 'https://books.toscrape.com/'+ next_page 
             else:
-                next_page_url = 'https://books.toscrape.com/catalogue/'+ next_page 
+                next_page_url = 'https://books.toscrape.com/catalogue/'+ next_pag
 
         yield response.follow(next_page_url, callback = self.parse)
 
