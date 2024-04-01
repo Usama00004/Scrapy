@@ -8,17 +8,22 @@ class BookspiderSpider(scrapy.Spider):
     allowed_domains = ["books.toscrape.com"]
     start_urls = ["http://books.toscrape.com/"]
 
-    # custom_settings = {
-    #     'FEEDS' : {
-    #         'booksdata.json' : {'format' : 'json', 'overwrite' : True}
-    #     }
-    # }
+    custom_settings = {
+        'FEEDS' : {
+            'booksdata.json' : {'format' : 'json', 'overwrite' : True}
+        }
+    }
 
-
+    # user_agents_list = [
+    #     'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
+    #     'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
+    #     'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
+    #     'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.81 Safari/537.36',
+    #     'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3312.0 Safari/537.36'
+    # ]
     """
         Fetching all the books on website
     """
-
     # def parse(self, response):
     #     books = response.css('article.product_pod')
     #     for book in books:
@@ -36,6 +41,7 @@ class BookspiderSpider(scrapy.Spider):
                 book_url = 'https://books.toscrape.com/'+ relative_url 
             else:
                 book_url = 'https://books.toscrape.com/catalogue/'+ relative_url
+            ##yield response.follow(book_url,callback = self.parse_book_page, headers = {"user-Agent" : self.user_agents_list[random.randint(0,len(self.user_agent_list))]})
             yield response.follow(book_url,callback = self.parse_book_page)
        
         next_page = response.css('li.next a ::attr(href)').get()   
@@ -44,7 +50,8 @@ class BookspiderSpider(scrapy.Spider):
                 next_page_url = 'https://books.toscrape.com/'+ next_page 
             else:
                 next_page_url = 'https://books.toscrape.com/catalogue/'+ next_page
-        yield response.follow(next_page_url, callback = self.parse)    
+            ##yield response.follow(next_page_url, callback = self.parse,headers = {"user-Agent" : self.user_agents_list[random.randint(0,len(self.user_agent_list))]})    
+            yield response.follow(next_page_url, callback = self.parse)    
 
    
     def parse_book_page(self,response):

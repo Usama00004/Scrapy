@@ -16,6 +16,11 @@ FEEDS = {
     'booksdata.json' : {'format':'json'}
 }
 
+SCRAPEOPS_API_KEY = 'f0f3e29a-2a69-47b1-9e83-796197832688'
+SCRAPEOPS_FAKE_USER_AGENT_ENDPOINT = 'https://headers.scrapeops.io/v1/user-agents'
+SCRAPEOPS_FAKE_USER_AGENT_ENABLED = True
+SCRAPEOPS_NUM_RESULTS = 50
+
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = "books_project (+http://www.yourdomain.com)"
 
@@ -53,9 +58,10 @@ ROBOTSTXT_OBEY = True
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
-#DOWNLOADER_MIDDLEWARES = {
-#    "books_project.middlewares.BooksProjectDownloaderMiddleware": 543,
-#}
+DOWNLOADER_MIDDLEWARES = {
+   "books_project.middlewares.BooksProjectDownloaderMiddleware": 543,
+   "books_project.middlewares.ScrapseOpsFakeUserAgentMiddleware" : 400
+}
 
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html
