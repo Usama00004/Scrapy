@@ -1,26 +1,30 @@
 # Books Scraper
 
-This Scrapy project is designed to scrape data about books from [source website].
+This project is a web scraping application built using Python and Scrapy framework. It is designed to extract data from websites and store it in structured formats like JSON, CSV, or XML.
 
 ## Table of Contents
 
-- [Overview](#overview)
-- [Setup](#setup)
+- [Installation](#installation)
 - [Usage](#usage)
-- [Data](#data)
+- [Project Structure](#project-structure)
 - [Contributing](#contributing)
-- [License](#license)
 
-## Overview
+## Installation
 
-This project utilizes the Scrapy framework to crawl a website and extract information about books, including titles, authors, genres, ratings, and prices. The scraped data can be used for various purposes such as analysis, building recommendation systems, or populating a database.
-
-## Setup
-
-To set up the project, follow these steps:
-
-1. **Clone the repository:**
+1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/books-scraper.git
-   cd books-scraper
+   git clone https://github.com/your_username/your_project.git
+
+## Usage
+
+### Configure the Spiders
+
+Modify the spider files in the `spiders/` directory according to your scraping requirements. Update the URLs, selectors, and data extraction logic as needed.
+
+### Run the Spiders
+
+Execute the desired spider using the following command:
+
+```bash
+scrapy crawl spider_name
