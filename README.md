@@ -13,8 +13,7 @@ This project is a web scraping application built using Python and Scrapy framewo
 
 1. Clone the repository:
 
-   ```bash
-   git clone https://github.com/your_username/your_project.git
+   git clone https://github.com/your_username/your_project.git 
 
 ## Usage
 
